@@ -1,6 +1,3 @@
-package com.example.bostatask.adapter
-
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,44 +6,38 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bostatask.R
 import com.example.domain.entity.Albums
 
+class AlbumsAdapter(private val albums: List<Albums>) :
+    RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>() {
 
-class AlbumAdapter(var albumsList: MutableList<Albums>, val itemClick: OnItemClick) :
-    RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
-    private var albumId: Int? = null
+    private var onItemClickListener: ((Albums) -> Unit)? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.albums_item, parent, false)
-        )
+    fun setOnItemClickListener(listener: (Albums) -> Unit) {
+        onItemClickListener = listener
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.textView.text = albumsList[position].title.toString()
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.albums_item, parent, false)
+        return AlbumViewHolder(view)
+    }
 
-        holder.textView.setOnClickListener {
-            albumId = albumsList[position].id
-            itemClick.onItemClicked(albumsList[position], it.id, position, albumsList[position].title.toString(), albumId!!)
-        }
+    override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
+        val album = albums[position]
+        holder.bind(album)
     }
 
     override fun getItemCount(): Int {
-        return albumsList.size
+        return albums.size
     }
 
-    class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val textView: TextView = itemView.findViewById(R.id.tvTitle)
-    }
+    inner class AlbumViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val albumTitleTextView: TextView = itemView.findViewById(R.id.tvTitleAlbums)
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun refreshData(list: MutableList<Albums>) {
-        albumsList.clear()
-        albumsList.addAll(list)
-        notifyDataSetChanged()
-    }
-
-    //interface item listener
-    interface OnItemClick {
-        fun onItemClicked(album: Albums, viewID: Int, position: Int, title: String, albumId: Int)
+        fun bind(album: Albums) {
+            albumTitleTextView.text = album.title
+            itemView.setOnClickListener {
+                onItemClickListener?.invoke(album)
+            }
+        }
     }
 }

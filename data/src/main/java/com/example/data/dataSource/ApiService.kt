@@ -1,20 +1,20 @@
 package com.example.data.dataSource
 
-import com.example.domain.entity.AlbumsResponse
-import com.example.domain.entity.PhotosResponse
-import com.example.domain.entity.UsersResponse
-import retrofit2.http.GET
-
-interface ApiService {
-
-    @GET("users")
-    suspend fun getUsers(): UsersResponse
-
-    @GET("albums")
-    suspend fun getAlbums(): AlbumsResponse
-
-    @GET("photos")
-    suspend fun getPhotos(): PhotosResponse
+import com.example.domain.entity.Albums
+import com.example.domain.entity.Photos
+import com.example.domain.entity.User
 
 
+
+interface UserRemoteDataSource {
+    suspend fun getUser(userId: Int): User
 }
+
+interface AlbumRemoteDataSource {
+    suspend fun getAlbums(userId: Int): List<Albums>
+}
+
+interface PhotoRemoteDataSource {
+    suspend fun getPhotos(albumId: Int): List<Photos>
+}
+
