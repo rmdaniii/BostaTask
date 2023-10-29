@@ -1,9 +1,9 @@
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.example.domain.entity.Albums
-import com.example.domain.entity.Photos
-import com.example.domain.entity.User
+import com.example.data.entity.Albums
+import com.example.data.entity.Photos
+import com.example.data.entity.User
 import com.example.domain.usecase.GetAlbumsUseCase
 import com.example.domain.usecase.GetPhotosUseCase
 import com.example.domain.usecase.GetUserUseCase

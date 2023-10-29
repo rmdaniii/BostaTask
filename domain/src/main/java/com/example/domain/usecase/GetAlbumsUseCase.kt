@@ -1,7 +1,6 @@
 package com.example.domain.usecase
 import com.example.data.dataSource.AlbumRemoteDataSource
-import com.example.domain.entity.Albums
-import com.example.domain.repo.ProfileRepo
+import com.example.data.entity.Albums
 
 class GetAlbumsUseCase (private val albumRemoteDataSource: AlbumRemoteDataSource ) {
     suspend fun execute(userId: Int): List<Albums> {

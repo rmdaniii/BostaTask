@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bostatask.R
-import com.example.domain.entity.Albums
+import com.example.data.entity.Albums
 
 class AlbumsAdapter(private val albums: List<Albums>) :
     RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>() {

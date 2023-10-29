@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bostatask.R
 import com.example.bostatask.adapter.PhotosAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AlbumDetailsActivity : AppCompatActivity() {
 
     private lateinit var searchEditText: EditText

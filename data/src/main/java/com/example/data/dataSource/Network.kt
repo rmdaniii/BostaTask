@@ -1,8 +1,8 @@
 package com.example.data.dataSource
 
-import com.example.domain.entity.Albums
-import com.example.domain.entity.Photos
-import com.example.domain.entity.User
+import com.example.data.entity.Albums
+import com.example.data.entity.Photos
+import com.example.data.entity.User
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

@@ -1,4 +1,4 @@
-package com.example.domain.entity
+package com.example.data.entity
 
 import com.google.gson.annotations.SerializedName
 
@@ -14,4 +14,4 @@ data class User(
     @SerializedName("address")
     val userAddress: UserAddress? = null,
 
-)
+    )
