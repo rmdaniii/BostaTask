@@ -15,5 +15,5 @@ search query.
  - Clean Architecture (app, Domain, Data).
  - MVVM.
  - Retrofit.
- - Dependency Injection "Dagger".
+ - Dependency Injection "Hily dagger".
  - Coroutines.
