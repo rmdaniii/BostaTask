@@ -1,6 +1,7 @@
 package com.example.bostatask.ui
 
 import AlbumDetailsViewModel
+import AlbumsViewModel
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -20,7 +21,7 @@ class AlbumDetailsActivity : AppCompatActivity() {
 
     private lateinit var searchEditText: EditText
     private lateinit var photosRecyclerView: RecyclerView
-    private val photoViewModel: AlbumDetailsViewModel by viewModels()
+    private val photoViewModel: AlbumsViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
