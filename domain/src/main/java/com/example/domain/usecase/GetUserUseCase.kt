@@ -1,9 +1,6 @@
 package com.example.domain.usecase
-import com.example.data.dataSource.UserRemoteDataSource
-import com.example.data.entity.User
+import com.example.domain.repo.ProfileRepo
 
-class GetUserUseCase(private val userRemoteDataSource: UserRemoteDataSource) {
-    suspend fun execute(userId: Int): User {
-        return userRemoteDataSource.getUser(userId)
-    }
+class GetUserUseCase(private val profileRepo: ProfileRepo) {
+    suspend operator fun invoke() = profileRepo.getUserUseCase()
 }

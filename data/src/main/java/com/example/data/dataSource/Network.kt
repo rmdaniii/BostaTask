@@ -1,21 +1,20 @@
 package com.example.data.dataSource
 
-import com.example.data.entity.Albums
-import com.example.data.entity.Photos
-import com.example.data.entity.User
-import retrofit2.Call
+import com.example.domain.entity.UserResponse
+import com.example.domain.entity.albumsResponse
+import com.example.domain.entity.photosResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface Network {
 
     @GET("/users/{userId}")
-    fun getUser(@Path("userId") userId: Int): Call<User>
+    fun getUser(): UserResponse
 
     @GET("/users/{userId}/albums")
-    fun getAlbums(@Path("userId") userId: Int): Call<List<Albums>>
+    fun getAlbums(): albumsResponse
 
     @GET("/albums/{albumId}/photos")
-    fun getPhotos(@Path("albumId") albumId: Int): Call<List<Photos>>
+    fun getPhotos(): photosResponse
 
 }

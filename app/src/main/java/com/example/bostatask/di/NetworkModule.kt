@@ -1,5 +1,6 @@
 package com.example.bostatask.di
 
+import com.example.data.dataSource.Network
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -7,6 +8,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -31,6 +33,12 @@ object NetworkModule {
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideApiService(retrofit: Retrofit): Network{
+        return retrofit.create(Network::class.java)
     }
 
 
